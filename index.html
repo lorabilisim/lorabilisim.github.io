@@ -1,1 +1,213 @@
-Hello world!
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta name="google-site-verification" content="mb1lCyW89r4DVgyu7mmK32BWL7JPpB3AchlzyMtj-2w" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoraLabs Bilişim - Teknoloji Çözümleri</title>
+    <meta name="description" content="LoraLabs Bilişim Yazılım Teknolojileri kurumsal web sitesi. Projelerimiz ve iletişim bilgileri.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- GENEL AYARLAR --- */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e293b;
+            --accent-color: #0ea5e9;
+            --text-color: #334155;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text-color); background-color: var(--bg-light); }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .navbar {
+            max-width: 1200px; margin: 0 auto; display: flex;
+            justify-content: space-between; align-items: center; padding: 1.2rem 2rem;
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--secondary-color); letter-spacing: -0.5px; }
+        .logo span { color: var(--primary-color); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-weight: 600; font-size: 0.95rem; transition: color 0.3s; color: var(--secondary-color); }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: var(--white);
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 0 2rem; position: relative; overflow: hidden;
+        }
+        .hero-content { max-width: 800px; z-index: 2; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2.5rem; font-weight: 300; }
+        .btn {
+            display: inline-block; background-color: var(--primary-color); color: var(--white);
+            padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .btn:hover { background-color: var(--accent-color); transform: translateY(-3px); }
+
+        /* --- SECTIONS --- */
+        section { padding: 5rem 2rem; }
+        .section-title { text-align: center; font-size: 2.2rem; color: var(--secondary-color); margin-bottom: 3rem; font-weight: 800; }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* --- ABOUT --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-text h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary-color); }
+
+        /* --- PROJECTS --- */
+        .projects { background-color: var(--white); }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .project-card {
+            background: var(--bg-light); border-radius: 12px; overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: transform 0.3s; border: 1px solid #e2e8f0;
+        }
+        .project-card:hover { transform: translateY(-10px); }
+        .card-content { padding: 2rem; }
+        .card-content h3 { margin-bottom: 0.5rem; color: var(--secondary-color); }
+        .tag {
+            display: inline-block; font-size: 0.8rem; padding: 0.3rem 0.8rem;
+            background: #e0e7ff; color: var(--primary-color); border-radius: 20px;
+            margin-bottom: 1rem; font-weight: 600;
+        }
+
+        /* --- CONTACT --- */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .contact-info div { margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+        .contact-info i { font-size: 1.5rem; color: var(--primary-color); }
+        .map-container iframe { width: 100%; height: 300px; border-radius: 12px; border: 0; }
+
+        /* --- FOOTER --- */
+        footer { background-color: var(--secondary-color); color: var(--white); padding: 2rem; text-align: center; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">Lora<span>Labs</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Anasayfa</a></li>
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#projects">Projelerimiz</a></li>
+                <li><a href="staj.html" style="color: var(--primary-color);">Staj Başvurusu</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Akademik Vizyon, <br> İleri Teknoloji</h1>
+            <p>
+                Yapay Zekâ, Tıbbi Segmentasyon, Otonom Dronlar ve LoRaWAN çözümleriyle; 
+                bilimsel araştırmaları sahada çalışan Ar-Ge projelerine dönüştürüyoruz.
+            </p>
+            
+            <div style="margin-top: 2rem;">
+                <a href="#contact" class="btn">Bize Ulaşın</a>
+                <a href="#projects" class="btn" style="background-color: transparent; border: 1px solid rgba(255,255,255,0.5); margin-left: 10px;">Projelerimiz</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title">Hakkımızda</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; line-height: 1.3;">Akademik Derinlik, <br><span style="color: var(--primary-color);">Endüstriyel Çözümler</span></h3>
+                <p>
+                    Lora Bilişim, teknoloji dünyasındaki standart çözümlerin ötesine geçerek, akademik araştırmaları gerçek hayat problemlerine uygulayan bir Ar-Ge merkezidir. 
+                    Kadromuz, teorik bilgiyi sahadaki pratik ihtiyaçlarla harmanlayan uzman araştırmacı ve mühendislerden oluşur.
+                </p>
+                <br>
+                <p>
+                    Odak noktamız sadece yazılım geliştirmek değil, <strong>"akıllı sistemler"</strong> inşa etmektir. Özellikle şu alanlarda derinleşiyoruz:
+                </p>
+                
+                <div style="margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div><i class="fas fa-brain" style="color: var(--primary-color);"></i> <strong>Yapay Zeka & LLM</strong><p style="font-size: 0.85rem; opacity: 0.8;">Küçük Dil Modelleri (SLM) ve RAG mimarileri.</p></div>
+                    <div><i class="fas fa-x-ray" style="color: var(--primary-color);"></i> <strong>Tıbbi Bilişim</strong><p style="font-size: 0.85rem; opacity: 0.8;">Medikal görüntü işleme ve segmentasyon.</p></div>
+                    <div><i class="fas fa-broadcast-tower" style="color: var(--primary-color);"></i> <strong>IoT & LoRaWAN</strong><p style="font-size: 0.85rem; opacity: 0.8;">Uzun menzilli sensör ağları.</p></div>
+                    <div><i class="fas fa-paper-plane" style="color: var(--primary-color);"></i> <strong>Otonom Sistemler</strong><p style="font-size: 0.85rem; opacity: 0.8;">İHA ve Dron yazılımları.</p></div>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Ar-Ge Laboratuvarı" 
+                     style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Öne Çıkan Ar-Ge Projelerimiz</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div style="height: 200px; overflow: hidden;"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Tıbbi Yapay Zeka" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="card-content"><span class="tag">Yapay Zeka & Sağlık</span><h3>MediSeg: Tıbbi Görüntü Segmentasyonu</h3><p>MR ve BT görüntülerinde tümör ve lezyonların derin öğrenme algoritmalarıyla otomatik tespitini sağlayan yapay zeka asistanı.</p></div>
+                </div>
+                <div class="project-card">
+                    <div style="height: 200px; overflow: hidden;"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Yapay Zeka Chatbot" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="card-content"><span class="tag">LLM & RAG</span><h3>Kurumsal Hafıza Asistanı</h3><p>Şirket içi dokümanlar üzerinde çalışan, verilerin dışarı çıkmadığı (Private Cloud), RAG mimarili Küçük Dil Modeli (SLM) çözümü.</p></div>
+                </div>
+                <div class="project-card">
+                    <div style="height: 200px; overflow: hidden;"><img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Otonom Dron" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="card-content"><span class="tag">IoT & Otonom Sistemler</span><h3>SkyLink: LoRaWAN Haberleşmeli Dron</h3><p>GSM ağının olmadığı kırsal alanlarda, LoRaWAN protokolü üzerinden veri aktaran ve otonom görev yapabilen afet müdahale dronu.</p></div>
+                </div>
+                <div class="project-card">
+                    <div style="height: 200px; overflow: hidden;"><img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mobil Uygulama" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="card-content"><span class="tag">Mobil Teknoloji</span><h3>Entegre Saha Yönetimi</h3><p>Ar-Ge projelerinin sahadaki verilerini anlık olarak merkeze ileten, çevrimdışı çalışabilen yüksek performanslı mobil uygulama.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2 class="section-title">İletişim</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div><i class="fas fa-map-marker-alt"></i><p>Serhat Teknopark, Küçük Atölye, Küme Evleri No: 323/2, 76000 Suveren / Merkez / Iğdır</p></div>
+                <div><i class="fas fa-envelope"></i><p>bilge@lorabilisim.com</p></div>
+                <div><i class="fas fa-phone"></i><p>+90 537 475 90 42</p></div>
+                <div style="margin-top: 2rem;">
+                    <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                    <a href="#" style="font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d98072.27064853944!2d43.99946464945454!3d39.8124095617356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406b2fab2a184fc9%3A0x3221cb3bac043e25!2sLoraLabs%20Bili%C5%9Fim%20Yaz%C4%B1l%C4%B1m%20Teknolojileri!5e0!3m2!1str!2str!4v1763994127459!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 LoraLabs Bilişim Yazılım Teknolojileri. Tüm hakları saklıdır.</p>
+    </footer>
+
+</body>
+</html>
