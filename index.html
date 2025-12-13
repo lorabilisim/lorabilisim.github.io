@@ -194,11 +194,22 @@
         <div class="contact-grid">
             <div class="contact-info">
                 <div><i class="fas fa-map-marker-alt"></i><p>Serhat Teknopark, Küçük Atölye, Küme Evleri No: 323/2, 76000 Suveren / Merkez / Iğdır</p></div>
-                <div><i class="fas fa-envelope"></i><p>bilge@lorabilisim.com</p></div>
+                <div><i class="fas fa-envelope"></i>
+                  <p>
+                    <a href="mailto:bilge@lorabilisim.com" style="color: var(--primary-color); text-decoration: underline;">
+                      bilge@lorabilisim.com
+                    </a>
+                  </p>
+                </div>
                 <div><i class="fas fa-phone"></i><p>+90 537 475 90 42</p></div>
                 <div style="margin-top: 2rem;">
                     <!--<a href="#" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>-->
-                    <a href="https://github.com/lorabilisim" style="margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/lorabilisim" style="margin-right: 0rem; font-size: 1.5rem;">
+                      <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://github.com/lorabilisim" style="font-size: 1.1rem; color: var(--primary-color); vertical-align: middle; horizontal-align: left;">
+                      github.com/lorabilisim
+                    </a>
                     <!--<a href="#" style="font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>-->
                 </div>
             </div>
@@ -212,8 +223,20 @@
         <p>© 2025 LoraLabs Bilişim Yazılım Teknolojileri. Tüm hakları saklıdır.</p>
     </footer>
 
+    <!-- Google Translate Widget Başlangıcı -->
+    <div id="google_translate_element" style="position: fixed; top: 20px; right: 20px; z-index: 2000;"></div>
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'tr',
+        includedLanguages: 'tr,en,de,fr,es,it,ru,ar,zh-CN,ja,fa,pt,hi,nl,pl,el,sv,ko',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Google Translate Widget Sonu -->
 </body>
-
 </html>
 
 
