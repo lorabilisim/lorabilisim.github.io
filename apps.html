@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Mobil Çözümler | LoraLabs Akademik Teknoloji</title>
+    <meta name="description" content="LoraLabs Mobil Uygulama Portfolyosu. Sweepy ve KPSS Koç ile yapay zeka destekli, kullanıcı dostu mobil deneyimler.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #google_translate_element { position: fixed; top: -500px; left: -500px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
+        .goog-te-banner-frame, .skiptranslate > iframe { display:none !important; }
+        .goog-te-gadget { opacity: 0; pointer-events: none; height: 0; overflow: hidden; }
+        body { top: 0 !important; }
+        
+        .apps-hero {
+            padding-block: 12rem 6rem;
+            background: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(34, 211, 238, 0.08) 0%, transparent 40%);
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 30px;
+            color: var(--blue);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            opacity: 0.5;
+        }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translate(-50%, 0);} 40% {transform: translate(-50%, -10px);} 60% {transform: translate(-50%, -5px);} }
+    </style>
+</head>
+<body>
+
+<header id="header">
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            <img src="logo_lora.svg" alt="LoraLabs Logo">
+            <span>LoraLabs</span>
+        </a>
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="index.html#home">Anasayfa</a></li>
+                <li><a href="index.html#projects">Projeler</a></li>
+                <li><a href="index.html#contact">İletişim</a></li>
+                <li><a href="staj.html" class="nav-cta">Staj Başvurusu</a></li>
+            </ul>
+        </nav>
+        <div class="nav-right-group">
+            <div class="lang-wrapper">
+                <button class="lang-btn" id="lang-btn">
+                    <i class="fas fa-globe"></i>
+                    <span class="lang-label" id="lang-current">TR</span>
+                </button>
+                <div class="lang-dropdown" id="lang-dropdown">
+                    <button class="lang-option" data-lang="tr"><span class="flag">🇹🇷</span> Türkçe</button>
+                    <button class="lang-option" data-lang="en"><span class="flag">🇬🇧</span> English</button>
+                    <button class="lang-option" data-lang="de"><span class="flag">🇩🇪</span> Deutsch</button>
+                    <button class="lang-option" data-lang="fr"><span class="flag">🇫🇷</span> Français</button>
+                    <button class="lang-option" data-lang="ar"><span class="flag">🇸🇦</span> العربية</button>
+                    <button class="lang-option" data-lang="ru"><span class="flag">🇷🇺</span> Русский</button>
+                    <button class="lang-option" data-lang="es"><span class="flag">🇪🇸</span> Español</button>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</header>
+
+<div id="google_translate_element"></div>
+
+<section class="apps-hero">
+    <div class="wrapper">
+        <div class="hero-badge reveal">Mobil Teknoloji Portfolyosu</div>
+        <h1 class="reveal" style="font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1;">
+            Akıllı Çözümler<br><span class="text-blue">Her An Yanınızda</span>
+        </h1>
+        <p class="body-text reveal" style="max-width: 750px; margin: 2rem auto; font-size: 1.2rem; opacity: 0.8;">
+            LoraLabs Ar-Ge merkezinde, akademik vizyonla kullanıcı dostu mobil deneyimler geliştiriyoruz.
+        </p>
+        <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
+    </div>
+</section>
+
+<!-- ============ SWEEPY ============ -->
+<section class="app-section">
+    <div class="wrapper">
+        <div class="app-grid">
+            <div class="col-img reveal">
+                <div class="app-slider-container">
+                    <div class="app-slider-inner">
+                        <div class="app-slider" id="slider-sweepy">
+                            <div class="app-slide"><img src="sweepy1.png" alt="Sweepy UI 1"></div>
+                            <div class="app-slide"><img src="sweepy2.png" alt="Sweepy UI 2"></div>
+                            <div class="app-slide"><img src="sweepy3.png" alt="Sweepy UI 3"></div>
+                        </div>
+                        <div class="slider-dots" id="dots-sweepy">
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-text reveal">
+                <p class="eyebrow">Yardımcı Araçlar</p>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Sweepy: <span class="text-blue">Zahmetsiz Düzen</span></h2>
+                <p class="body-text" style="font-size: 1.1rem; margin-bottom: 2rem;">
+                    Telefonunuzda yer kalmadı mı? Sweepy, galeri temizliğini eğlenceli bir oyuna dönüştürerek GB'larca alanı saniyeler içinde geri kazanmanızı sağlar.
+                </p>
+                
+                <div class="app-features-list">
+                    <div class="app-feature-item">
+                        <i class="fas fa-magic"></i>
+                        <div><h4>Akıllı Ayıklama</h4><p>Sağa kaydır sakla, sola kaydır sil. Hızlı ve sezgisel.</p></div>
+                    </div>
+                    <div class="app-feature-item">
+                        <i class="fas fa-layer-group"></i>
+                        <div><h4>Dosya Yöneticisi</h4><p>Sadece silmez, albümlerinizi de kolayca düzenler.</p></div>
+                    </div>
+                    <div class="app-feature-item">
+                        <i class="fas fa-video"></i>
+                        <div><h4>Video Kompresör</h4><p>Kaliteyi bozmadan videoları %90'a kadar küçültür.</p></div>
+                    </div>
+                    <div class="app-feature-item">
+                        <i class="fas fa-lock"></i>
+                        <div><h4>Gizli Kasa</h4><p>Özel dosyalarınız için şifreli, çevrimdışı güvenlik.</p></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3.5rem;">
+                    <a href="https://play.google.com/store/apps/details?id=com.loraapps.sweepit" target="_blank" class="play-badge">
+                        <i class="fab fa-google-play"></i>
+                        <div class="badge-text">
+                            <span>Hemen İndir</span>
+                            <span>Google Play</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ KPSS KOC ============ -->
+<section class="app-section">
+    <div class="wrapper">
+        <div class="app-grid">
+            <div class="col-img reveal">
+                <div class="app-slider-container">
+                    <div class="app-slider-inner">
+                        <div class="app-slider" id="slider-kpsskoc">
+                            <div class="app-slide"><img src="kpsskoc1.png" alt="KPSS Koç UI 1"></div>
+                            <div class="app-slide"><img src="kpsskoc2.png" alt="KPSS Koç UI 2"></div>
+                            <div class="app-slide"><img src="kpsskoc0.png" alt="KPSS Koç UI 3"></div>
+                        </div>
+                        <div class="slider-dots" id="dots-kpsskoc">
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-text reveal">
+                <p class="eyebrow">Eğitim Teknolojileri</p>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">KPSS Koç: <span class="text-blue">Dijital Mentor</span></h2>
+                <p class="body-text" style="font-size: 1.1rem; margin-bottom: 2rem;">
+                    Sınav hazırlık sürecini yapay zeka ile kişiselleştirin. Akıllı zaman takibi ve analizlerle rakiplerinizin önüne geçin.
+                </p>
+                
+                <div class="app-features-list">
+                    <div class="app-feature-item">
+                        <i class="fas fa-microchip"></i>
+                        <div><h4>AI Asistan</h4><p>7/24 yanınızda olan, sorularınızı yanıtlayan yapay zeka.</p></div>
+                    </div>
+                    <div class="app-feature-item">
+                        <i class="fas fa-stopwatch-20"></i>
+                        <div><h4>Arka Plan Sayaç</h4><p>Uygulama kapalıyken bile kesintisiz çalışma takibi.</p></div>
+                    </div>
+                    <div class="app-feature-item">
+                        <i class="fas fa-medal"></i>
+                        <div><h4>XP & Seviye</h4><p>Çalışmayı bir oyuna dönüştüren motivasyon sistemi.</p></div>
+                    </div>
+                    <div class="app-feature-item">
+                        <i class="fas fa-chart-pie"></i>
+                        <div><h4>Derin Analiz</h4><p>Gelişmiş istatistiklerle eksiklerinizi anında görün.</p></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3.5rem;">
+                    <a href="https://play.google.com/store/apps/details?id=com.loraapps.kpss" target="_blank" class="play-badge">
+                        <i class="fab fa-google-play"></i>
+                        <div class="badge-text">
+                            <span>Hemen İndir</span>
+                            <span>Google Play</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="wrapper">
+        <div class="footer-bottom">
+            <p>&copy; 2025 LoraLabs. Tüm hakları saklıdır.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'tr', includedLanguages: 'tr,en,de,fr,ar,ru,es', autoDisplay: false }, 'google_translate_element');
+}
+
+function setupSlider(sliderId, dotsId) {
+    const slider = document.getElementById(sliderId);
+    const dotsContainer = document.getElementById(dotsId);
+    const dots = dotsContainer.querySelectorAll('.dot');
+    let currentIndex = 0;
+    let isDragging = false;
+    let interval;
+
+    function updateDots(index) { dots.forEach((dot, i) => dot.classList.toggle('active', i === index)); }
+    function scrollNext() {
+        if (isDragging) return;
+        currentIndex = (currentIndex + 1) % dots.length;
+        slider.scrollTo({ left: slider.offsetWidth * currentIndex, behavior: 'smooth' });
+        updateDots(currentIndex);
+    }
+    interval = setInterval(scrollNext, 4000);
+    slider.addEventListener('scroll', () => {
+        const index = Math.round(slider.scrollLeft / slider.offsetWidth);
+        if (index !== currentIndex) { currentIndex = index; updateDots(currentIndex); }
+    });
+    slider.addEventListener('mousedown', () => { isDragging = true; clearInterval(interval); });
+    slider.addEventListener('mouseup', () => { isDragging = false; interval = setInterval(scrollNext, 4000); });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setupSlider('slider-sweepy', 'dots-sweepy');
+    setupSlider('slider-kpsskoc', 'dots-kpsskoc');
+});
+
+// ROBUST TRANSLATION LOGIC (Synced with index.html)
+(function () {
+    var LABELS = { tr:'TR', en:'EN', de:'DE', fr:'FR', ar:'AR', ru:'RU', es:'ES' };
+    var langBtn  = document.getElementById('lang-btn');
+    var dropdown = document.getElementById('lang-dropdown');
+    var label    = document.getElementById('lang-current');
+    var options  = document.querySelectorAll('.lang-option');
+    var KEY      = 'll_lang';
+    var saved    = localStorage.getItem(KEY) || 'tr';
+
+    label.textContent = LABELS[saved] || saved.toUpperCase();
+    options.forEach(function(o) { o.classList.toggle('active', o.getAttribute('data-lang') === saved); });
+
+    langBtn.addEventListener('click', function(e) { e.stopPropagation(); dropdown.classList.toggle('open'); });
+    document.addEventListener('click', function() { dropdown.classList.remove('open'); });
+
+    function applyGT(lang, attempt) {
+        attempt = attempt || 0;
+        if (lang === 'tr') return;
+        var combo = document.querySelector('select.goog-te-combo');
+        if (combo) {
+            combo.value = lang;
+            combo.dispatchEvent(new Event('change', { bubbles: true }));
+        } else if (attempt < 30) {
+            setTimeout(function() { applyGT(lang, attempt + 1); }, 300);
+        }
+    }
+
+    if (saved !== 'tr') setTimeout(function() { applyGT(saved, 0); }, 1200);
+
+    options.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var lang = btn.getAttribute('data-lang');
+            localStorage.setItem(KEY, lang);
+            if (lang === 'tr') location.reload();
+            else {
+                var combo = document.querySelector('select.goog-te-combo');
+                if (combo) applyGT(lang, 0); else location.reload();
+            }
+        });
+    });
+
+    function killBar() {
+        var bar = document.querySelector('.goog-te-banner-frame');
+        if (bar) bar.style.display = 'none';
+        if (document.body.style.top && document.body.style.top !== '0px') document.body.style.top = '0px';
+    }
+    [400, 800, 1500, 3000].forEach(function(ms) { setTimeout(killBar, ms); });
+    new MutationObserver(killBar).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
+})();
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
