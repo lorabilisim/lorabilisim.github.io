@@ -9,11 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        #google_translate_element { position: fixed; top: -500px; left: -500px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
-        .goog-te-banner-frame, .skiptranslate > iframe { display:none !important; }
-        .goog-te-gadget { opacity: 0; pointer-events: none; height: 0; overflow: hidden; }
-        body { top: 0 !important; }
-        
         .apps-hero {
             padding-block: 12rem 6rem;
             background: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
@@ -56,7 +51,9 @@
         <nav class="nav-menu" id="nav-menu">
             <ul>
                 <li><a href="index.html#home">Anasayfa</a></li>
-                <li><a href="index.html#projects">Projeler</a></li>
+                <li><a href="index.html#about">Hakkımızda</a></li>
+                <li><a href="index.html#projects">Projelerimiz</a></li>
+                <li><a href="apps.html">Mobil Uygulamalar</a></li>
                 <li><a href="index.html#contact">İletişim</a></li>
                 <li><a href="staj.html" class="nav-cta">Staj Başvurusu</a></li>
             </ul>
@@ -220,97 +217,12 @@
 <footer>
     <div class="wrapper">
         <div class="footer-bottom">
-            <p>&copy; 2026 LoraLabs Bilişim Yazılım Teknolojileri. Tüm hakları saklıdır.</p>
+            <p>&copy; 2025 LoraLabs. Tüm hakları saklıdır.</p>
         </div>
     </div>
 </footer>
 
 <script src="main.js"></script>
-<script>
-function googleTranslateElementInit() {
-    new google.translate.TranslateElement({ pageLanguage: 'tr', includedLanguages: 'tr,en,de,fr,ar,ru,es', autoDisplay: false }, 'google_translate_element');
-}
-
-function setupSlider(sliderId, dotsId) {
-    const slider = document.getElementById(sliderId);
-    const dotsContainer = document.getElementById(dotsId);
-    const dots = dotsContainer.querySelectorAll('.dot');
-    let currentIndex = 0;
-    let isDragging = false;
-    let interval;
-
-    function updateDots(index) { dots.forEach((dot, i) => dot.classList.toggle('active', i === index)); }
-    function scrollNext() {
-        if (isDragging) return;
-        currentIndex = (currentIndex + 1) % dots.length;
-        slider.scrollTo({ left: slider.offsetWidth * currentIndex, behavior: 'smooth' });
-        updateDots(currentIndex);
-    }
-    interval = setInterval(scrollNext, 4000);
-    slider.addEventListener('scroll', () => {
-        const index = Math.round(slider.scrollLeft / slider.offsetWidth);
-        if (index !== currentIndex) { currentIndex = index; updateDots(currentIndex); }
-    });
-    slider.addEventListener('mousedown', () => { isDragging = true; clearInterval(interval); });
-    slider.addEventListener('mouseup', () => { isDragging = false; interval = setInterval(scrollNext, 4000); });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    setupSlider('slider-sweepy', 'dots-sweepy');
-    setupSlider('slider-kpsskoc', 'dots-kpsskoc');
-});
-
-// ROBUST TRANSLATION LOGIC (Synced with index.html)
-(function () {
-    var LABELS = { tr:'TR', en:'EN', de:'DE', fr:'FR', ar:'AR', ru:'RU', es:'ES' };
-    var langBtn  = document.getElementById('lang-btn');
-    var dropdown = document.getElementById('lang-dropdown');
-    var label    = document.getElementById('lang-current');
-    var options  = document.querySelectorAll('.lang-option');
-    var KEY      = 'll_lang';
-    var saved    = localStorage.getItem(KEY) || 'tr';
-
-    label.textContent = LABELS[saved] || saved.toUpperCase();
-    options.forEach(function(o) { o.classList.toggle('active', o.getAttribute('data-lang') === saved); });
-
-    langBtn.addEventListener('click', function(e) { e.stopPropagation(); dropdown.classList.toggle('open'); });
-    document.addEventListener('click', function() { dropdown.classList.remove('open'); });
-
-    function applyGT(lang, attempt) {
-        attempt = attempt || 0;
-        if (lang === 'tr') return;
-        var combo = document.querySelector('select.goog-te-combo');
-        if (combo) {
-            combo.value = lang;
-            combo.dispatchEvent(new Event('change', { bubbles: true }));
-        } else if (attempt < 30) {
-            setTimeout(function() { applyGT(lang, attempt + 1); }, 300);
-        }
-    }
-
-    if (saved !== 'tr') setTimeout(function() { applyGT(saved, 0); }, 1200);
-
-    options.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            var lang = btn.getAttribute('data-lang');
-            localStorage.setItem(KEY, lang);
-            if (lang === 'tr') location.reload();
-            else {
-                var combo = document.querySelector('select.goog-te-combo');
-                if (combo) applyGT(lang, 0); else location.reload();
-            }
-        });
-    });
-
-    function killBar() {
-        var bar = document.querySelector('.goog-te-banner-frame');
-        if (bar) bar.style.display = 'none';
-        if (document.body.style.top && document.body.style.top !== '0px') document.body.style.top = '0px';
-    }
-    [400, 800, 1500, 3000].forEach(function(ms) { setTimeout(killBar, ms); });
-    new MutationObserver(killBar).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
-})();
-</script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
