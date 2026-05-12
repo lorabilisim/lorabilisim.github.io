@@ -1,3 +1,13 @@
+/* ==========================================================================
+   GOOGLE TRANSLATE UI CLEANUP
+   ========================================================================== */
+#google_translate_element { position: fixed; top: -500px; left: -500px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
+.goog-te-banner-frame, .skiptranslate > iframe, .goog-te-balloon-frame, .goog-tooltip, .goog-tooltip:hover { display: none !important; }
+.goog-te-gadget { opacity: 0; pointer-events: none; height: 0; overflow: hidden; }
+.goog-text-highlight { background-color: transparent !important; box-shadow: none !important; border: none !important; }
+body { top: 0 !important; }
+font[style*="vertical-align"] { vertical-align: inherit !important; }
+
 /* =============================================
    LoraLabs — Professional Design System
    Mobile-first, zero-overflow guarantee
@@ -141,7 +151,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;  /* Lower than menu so menu overlaps header */
+    z-index: 999999;
     padding: 1.1rem 0;
     transition: background 0.4s var(--ease), padding 0.4s var(--ease);
 }
@@ -173,7 +183,7 @@ header.sticky {
     font-weight: 800;
     font-size: 1.4rem;
     flex-shrink: 0;
-    z-index: 10001; /* Above menu overlay */
+    z-index: 1000001; /* Above menu overlay */
     position: relative;
 }
 .logo img {
@@ -308,9 +318,15 @@ header.sticky {
     border-radius: 10px;
     background: rgba(255,255,255,0.04);
     cursor: pointer;
-    z-index: 10001; /* Always on top, even above menu */
+    z-index: 1000001; /* Above menu overlay */
     position: relative;
     flex-shrink: 0;
+    transition: all 0.3s var(--ease);
+}
+.hamburger.open {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--blue);
+    transform: scale(1.1);
 }
 .hamburger span {
     display: block;
@@ -816,29 +832,38 @@ footer {
 
     /* --- Nav overlay --- */
     .nav-menu {
-        position: fixed;
-        inset: 0;
-        z-index: 10000;
-        background: #020617;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 999999 !important;
+        background-color: #020617 !important; /* Extremely solid background */
         display: flex;
         align-items: center;
         justify-content: center;
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.3s ease;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
     }
     .nav-menu.open {
-        opacity: 1;
+        opacity: 1 !important;
+        visibility: visible !important;
         pointer-events: auto;
     }
     .nav-menu ul {
         flex-direction: column;
         align-items: center;
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
-    .nav-menu a { font-size: 1.4rem; color: var(--white); }
+    .nav-menu a { font-size: 1.25rem; color: var(--white); }
     .hamburger { display: flex; }
-    .nav-cta { font-size: 1rem !important; }
+    .nav-cta { 
+        font-size: 1.1rem !important;
+        padding: 0.8rem 2.2rem !important;
+        margin-top: 0.5rem;
+    }
 
     /* --- App Showcase --- */
     .app-section { padding-block: 3.5rem; }
