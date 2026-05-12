@@ -98,3 +98,114 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+/* ---- Dynamic Translation System ---- */
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'tr', includedLanguages: 'tr,en,de,fr,ar,ru,es', autoDisplay: false }, 'google_translate_element');
+}
+
+function initTranslation() {
+    const LABELS = { tr:'TR', en:'EN', de:'DE', fr:'FR', ar:'AR', ru:'RU', es:'ES' };
+    const KEY = 'll_lang';
+    const langBtn = document.getElementById('lang-btn');
+    const dropdown = document.getElementById('lang-dropdown');
+    const label = document.getElementById('lang-current');
+    const options = document.querySelectorAll('.lang-option');
+    if (!langBtn || !dropdown || !label) return;
+    let saved = localStorage.getItem(KEY) || 'tr';
+    const updateUI = (lang) => {
+        label.textContent = LABELS[lang] || lang.toUpperCase();
+        options.forEach(opt => opt.classList.toggle('active', opt.getAttribute('data-lang') === lang));
+    };
+    updateUI(saved);
+    langBtn.addEventListener('click', (e) => { e.stopPropagation(); dropdown.classList.toggle('open'); });
+    document.addEventListener('click', () => dropdown.classList.remove('open'));
+    dropdown.addEventListener('click', (e) => e.stopPropagation());
+    const applyGT = (lang, attempt = 0) => {
+        const combo = document.querySelector('select.goog-te-combo');
+        if (combo) {
+            combo.value = lang;
+            combo.dispatchEvent(new Event('change', { bubbles: true }));
+        } else if (attempt < 50) {
+            setTimeout(() => applyGT(lang, attempt + 1), 150);
+        }
+    };
+    if (saved !== 'tr') applyGT(saved);
+    options.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            if (lang === (localStorage.getItem(KEY) || 'tr')) { dropdown.classList.remove('open'); return; }
+            localStorage.setItem(KEY, lang);
+            updateUI(lang);
+            dropdown.classList.remove('open');
+            if (lang === 'tr') {
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                location.reload();
+            } else applyGT(lang);
+        });
+    });
+    const killFeedback = () => {
+        ['.goog-te-banner-frame', '.goog-te-balloon-frame', '.goog-tooltip', '.goog-te-menu-frame', '.goog-te-gadget-icon'].forEach(s => {
+            const el = document.querySelector(s);
+            if (el) el.style.display = 'none';
+        });
+        if (document.body.style.top && document.body.style.top !== '0px') document.body.style.top = '0px';
+    };
+    setInterval(killFeedback, 500);
+    new MutationObserver(killFeedback).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
+}
+
+// Ensure it runs after DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTranslation);
+} else {
+    initTranslation();
+}
+
+/**
+ * Image Slider Helper for Apps page
+ */
+function setupSlider(sliderId, dotsId) {
+    const slider = document.getElementById(sliderId);
+    const dotsContainer = document.getElementById(dotsId);
+    if (!slider || !dotsContainer) return;
+
+    const dots = dotsContainer.querySelectorAll('.dot');
+    let currentIndex = 0;
+    let isDragging = false;
+    let interval;
+
+    function updateDots(index) { 
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index)); 
+    }
+
+    function scrollNext() {
+        if (isDragging) return;
+        currentIndex = (currentIndex + 1) % dots.length;
+        slider.scrollTo({ left: slider.offsetWidth * currentIndex, behavior: 'smooth' });
+        updateDots(currentIndex);
+    }
+
+    interval = setInterval(scrollNext, 4000);
+
+    slider.addEventListener('scroll', () => {
+        const index = Math.round(slider.scrollLeft / slider.offsetWidth);
+        if (index !== currentIndex) { 
+            currentIndex = index; 
+            updateDots(currentIndex); 
+        }
+    });
+
+    slider.addEventListener('mousedown', () => { isDragging = true; clearInterval(interval); });
+    slider.addEventListener('mouseup', () => { isDragging = false; interval = setInterval(scrollNext, 4000); });
+}
+
+// Auto-init sliders if they exist
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('slider-sweepy')) {
+        setupSlider('slider-sweepy', 'dots-sweepy');
+    }
+    if (document.getElementById('slider-kpsskoc')) {
+        setupSlider('slider-kpsskoc', 'dots-kpsskoc');
+    }
+});
