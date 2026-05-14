@@ -4,13 +4,26 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* ---- Header sticky on scroll ---- */
+    /* ---- Scroll Progress Bar ---- */
     const header = document.getElementById('header');
-    if (header) {
-        window.addEventListener('scroll', () => {
+    const scrollBar = document.createElement('div');
+    scrollBar.className = 'scroll-progress';
+    document.body.appendChild(scrollBar);
+
+    window.addEventListener('scroll', () => {
+        const h = document.documentElement;
+        const b = document.body;
+        const st = 'scrollTop';
+        const sh = 'scrollHeight';
+        const percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+        scrollBar.style.width = percent + '%';
+        
+        /* Header sticky */
+        if (header) {
             header.classList.toggle('sticky', window.scrollY > 40);
-        }, { passive: true });
-    }
+        }
+    }, { passive: true });
+
 
     /* ---- Hamburger / Mobile menu ---- */
     const hamburger = document.getElementById('hamburger');
@@ -201,7 +214,29 @@ function setupSlider(sliderId, dotsId) {
 }
 
 // Auto-init sliders if they exist
+// Theme Toggle Logic
+function initTheme() {
+    const KEY = 'll_theme';
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (!toggleBtn) return;
+
+    const currentTheme = localStorage.getItem(KEY) || 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    toggleBtn.addEventListener('click', () => {
+        const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem(KEY, theme);
+    });
+}
+
+// Ensure theme is applied immediately
+const savedTheme = localStorage.getItem('ll_theme') || 'dark';
+document.documentElement.setAttribute('data-theme', savedTheme);
+
 document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    
     if (document.getElementById('slider-sweepy')) {
         setupSlider('slider-sweepy', 'dots-sweepy');
     }
@@ -209,3 +244,4 @@ document.addEventListener('DOMContentLoaded', () => {
         setupSlider('slider-kpsskoc', 'dots-kpsskoc');
     }
 });
+
