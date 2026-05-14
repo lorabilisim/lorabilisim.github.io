@@ -3,100 +3,170 @@
 <head>
     <meta name="google-site-verification" content="mb1lCyW89r4DVgyu7mmK32BWL7JPpB3AchlzyMtj-2w" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staj Başvurusu - LoraLabs Bilişim</title>
-    <meta name="description" content="LoraLabs Bilişim staj başvuru formu. Üniversite öğrencileri için staj olanakları.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Staj Başvurusu | LoraLabs Akademik Teknoloji</title>
+    <meta name="description" content="LoraLabs Bilişim staj başvuru formu. Üniversite öğrencileri için yapay zeka ve IoT odaklı staj olanakları.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* CSS index.html ile aynı tutuldu */
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e293b;
-            --accent-color: #0ea5e9;
-            --text-color: #334155;
-            --bg-light: #f8fafc;
-            --white: #ffffff;
+        .staj-hero {
+            padding-block: 10rem 4rem;
+            text-align: center;
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 40%);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text-color); background-color: var(--bg-light); }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        header { background-color: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 15px rgba(0,0,0,0.05); position: fixed; width: 100%; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
-        .navbar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--secondary-color); letter-spacing: -0.5px; }
-        .logo span { color: var(--primary-color); }
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { font-weight: 600; font-size: 0.95rem; transition: color 0.3s; color: var(--secondary-color); }
-        .nav-links a:hover { color: var(--primary-color); }
-        
-        section { padding: 5rem 2rem; margin-top: 3rem; } /* Header payı için margin-top eklendi */
-        .section-title { text-align: center; font-size: 2.2rem; color: var(--secondary-color); margin-bottom: 3rem; font-weight: 800; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        
-        .internship-section { text-align: center; background-color: #f0f9ff; min-height: 80vh; }
-        .form-container { background: var(--white); padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto; }
-        footer { background-color: var(--secondary-color); color: var(--white); padding: 2rem; text-align: center; font-size: 0.9rem; }
-
-        @media (max-width: 768px) { .nav-links { display: none; } }
+        .info-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--blue);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: left;
+            backdrop-filter: blur(12px);
+        }
+        .form-wrapper {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 1.5rem;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .iframe-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff; /* Google Form white background fix */
+        }
+        @media (max-width: 768px) {
+            .info-card { padding: 1.5rem; }
+            .staj-hero { padding-top: 8rem; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <nav class="navbar">
-            <a href="index.html" class="logo">
-                <img src="logo_lora.svg" alt="LoraLabs Logo" style="height: 50px; width: auto; display: block;">
-            </a>
-
-            <ul class="nav-links">
-                <li><a href="index.html">Anasayfa</a></li>
+<header id="header">
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            <img src="logo_lora.svg" alt="LoraLabs Logo">
+            <span>LoraLabs</span>
+        </a>
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="index.html#home">Anasayfa</a></li>
                 <li><a href="index.html#about">Hakkımızda</a></li>
                 <li><a href="index.html#projects">Projelerimiz</a></li>
-                <li><a href="staj.html" style="color: var(--primary-color);">Staj Başvurusu</a></li>
+                <li><a href="apps.html">Mobil Uygulamalar</a></li>
                 <li><a href="index.html#contact">İletişim</a></li>
+                <li><a href="staj.html" class="active">Staj Başvurusu</a></li>
             </ul>
         </nav>
-    </header>
-
-    <section id="internship" class="internship-section">
-        <div class="container">
-            <h2 class="section-title">Staj Olanakları ve Başvuru</h2>
-            
-            <div style="background: var(--white); padding: 2rem; border-radius: 12px; border-left: 5px solid var(--primary-color); box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 2rem; text-align: left;">
-                <div style="display: flex; align-items: start; gap: 1rem;">
-                    <i class="fas fa-graduation-cap" style="font-size: 2rem; color: var(--primary-color); margin-top: 5px;"></i>
-                    <div>
-                        <h3 style="margin-bottom: 0.5rem; color: var(--secondary-color);">Geleceğin Mühendislerini Arıyoruz</h3>
-                        <p style="font-size: 1.05rem; color: #555;">
-                            Türkiye'nin her yerinden stajyer kabul ediyoruz. Üniversitelerin <strong>2, 3 ve 4. sınıflarına</strong> yönelik bu programı kaçırmayın. 
-                            <br><br>
-                            Gerçek projelerde deneyim kazanmak, akademik bilgilerinizi RAG, AI ve IoT projelerinde hayata geçirmek için detayları inceleyebilir, aşağıdaki formu doldurarak başvurunuzu bize iletebilirsiniz.
-                        </p>
-                    </div>
+        <div class="nav-right-group">
+            <button class="theme-toggle" id="theme-toggle" title="Karanlık/Aydınlık Tema">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
+            <div class="lang-wrapper">
+                <button class="lang-btn" id="lang-btn">
+                    <i class="fas fa-globe"></i>
+                    <span class="lang-label" id="lang-current">TR</span>
+                </button>
+                <div class="lang-dropdown" id="lang-dropdown">
+                    <button class="lang-option" data-lang="tr"><span class="flag">🇹🇷</span> Türkçe</button>
+                    <button class="lang-option" data-lang="en"><span class="flag">🇬🇧</span> English</button>
+                    <button class="lang-option" data-lang="de"><span class="flag">🇩🇪</span> Deutsch</button>
+                    <button class="lang-option" data-lang="fr"><span class="flag">🇫🇷</span> Français</button>
+                    <button class="lang-option" data-lang="ar"><span class="flag">🇸🇦</span> العربية</button>
+                    <button class="lang-option" data-lang="ru"><span class="flag">🇷🇺</span> Русский</button>
+                    <button class="lang-option" data-lang="es"><span class="flag">🇪🇸</span> Español</button>
                 </div>
             </div>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</header>
 
-            <div class="form-container">
-                <div style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
-                    <i class="fas fa-info-circle"></i> Başvuru için Google hesabınızla giriş yapmanız gerekmektedir.
+<div id="google_translate_element"></div>
+
+<section class="staj-hero">
+    <div class="wrapper">
+        <div class="reveal">
+            <span class="badge" style="margin-bottom: 1.5rem;">Kariyer & Gelecek</span>
+            <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem;">Staj Olanakları ve Başvuru</h1>
+            <p class="body-text" style="max-width: 700px; margin-inline: auto;">LoraLabs Ar-Ge merkezinde gerçek projelerle deneyim kazanarak geleceğin teknolojilerine yön verin.</p>
+        </div>
+
+        <div class="info-card reveal" style="margin-top: 4rem;">
+            <div style="display: flex; align-items: start; gap: 1.5rem;">
+                <div style="width: 54px; height: 54px; background: rgba(59,130,246,0.1); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <i class="fas fa-graduation-cap" style="font-size: 1.6rem; color: var(--blue);"></i>
                 </div>
-
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScZZ-zXFIqdqOI6YnOdPhQewp5ljp-keUtJNMuo7D_NLfSTvw/viewform?embedded=true" width="100%" height="1640" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
-
+                <div>
+                    <h3 style="margin-bottom: 0.75rem; font-size: 1.4rem;">Geleceğin Mühendislerini Arıyoruz</h3>
+                    <p style="color: var(--slate); line-height: 1.6;">
+                        Türkiye'nin her yerinden stajyer kabul ediyoruz. Üniversitelerin <strong>2, 3 ve 4. sınıflarına</strong> yönelik bu programı kaçırmayın.
+                        <br><br>
+                        Gerçek projelerde deneyim kazanmak, akademik bilgilerinizi RAG, AI ve IoT projelerinde hayata geçirmek için aşağıdaki formu doldurarak başvurunuzu bize iletebilirsiniz.
+                    </p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <footer>
-        <p>© 2026 LoraLabs Bilişim Yazılım Teknolojileri. Tüm hakları saklıdır.</p>
-    </footer>
+        <div class="form-wrapper reveal">
+            <div style="margin-bottom: 1.5rem; color: var(--slate); font-size: 0.9rem; text-align: left; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-info-circle" style="color: var(--blue);"></i> 
+                <span>Başvuru için Google hesabınızla giriş yapmanız gerekmektedir.</span>
+            </div>
+            <div class="iframe-container">
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLScZZ-zXFIqdqOI6YnOdPhQewp5ljp-keUtJNMuo7D_NLfSTvw/viewform?embedded=true"
+                    width="100%" height="1640" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="wrapper">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="index.html#home" class="logo"><img src="logo_lora.svg" alt="LoraLabs"><span>LoraLabs</span></a>
+                <p>Akademik bilgi birikimini yenilikçi teknolojilerle birleştirerek geleceğin akıllı sistemlerini inşa ediyoruz.</p>
+                <div class="socials">
+                    <a href="https://github.com/lorabilisim" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Sayfalar</h4>
+                <ul>
+                    <li><a href="index.html#home">Anasayfa</a></li>
+                    <li><a href="index.html#about">Hakkımızda</a></li>
+                    <li><a href="index.html#projects">Projelerimiz</a></li>
+                    <li><a href="staj.html">Staj Başvurusu</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Kurumsal</h4>
+                <ul>
+                    <li><a href="#">KVKK Aydınlatma</a></li>
+                    <li><a href="#">Gizlilik Politikası</a></li>
+                    <li><a href="#">Kullanım Şartları</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LoraLabs Bilişim Yazılım Teknolojileri. Tüm hakları saklıdır.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
-
 </html>
-
-
-
-
