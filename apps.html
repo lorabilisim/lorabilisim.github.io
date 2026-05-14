@@ -53,12 +53,16 @@
                 <li><a href="index.html#home">Anasayfa</a></li>
                 <li><a href="index.html#about">Hakkımızda</a></li>
                 <li><a href="index.html#projects">Projelerimiz</a></li>
-                <li><a href="apps.html">Mobil Uygulamalar</a></li>
+                <li><a href="apps.html" class="active">Mobil Uygulamalar</a></li>
                 <li><a href="index.html#contact">İletişim</a></li>
-                <li><a href="staj.html" class="nav-cta">Staj Başvurusu</a></li>
+                <li><a href="staj.html">Staj Başvurusu</a></li>
             </ul>
         </nav>
         <div class="nav-right-group">
+            <button class="theme-toggle" id="theme-toggle" title="Karanlık/Aydınlık Tema">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
             <div class="lang-wrapper">
                 <button class="lang-btn" id="lang-btn">
                     <i class="fas fa-globe"></i>
@@ -82,6 +86,7 @@
 <div id="google_translate_element"></div>
 
 <section class="apps-hero">
+    <div class="hero-overlay"></div>
     <div class="wrapper">
         <div class="hero-badge reveal">Mobil Teknoloji Portfolyosu</div>
         <h1 class="reveal" style="font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1;">
@@ -216,8 +221,36 @@
 
 <footer>
     <div class="wrapper">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="index.html#home" class="logo"><img src="logo_lora.svg" alt="LoraLabs"><span>LoraLabs</span></a>
+                <p>Akademik bilgi birikimini yenilikçi teknolojilerle birleştirerek geleceğin akıllı sistemlerini inşa ediyoruz.</p>
+                <div class="socials">
+                    <a href="https://github.com/lorabilisim" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Sayfalar</h4>
+                <ul>
+                    <li><a href="index.html#home">Anasayfa</a></li>
+                    <li><a href="index.html#about">Hakkımızda</a></li>
+                    <li><a href="index.html#projects">Projelerimiz</a></li>
+                    <li><a href="staj.html">Staj Başvurusu</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Kurumsal</h4>
+                <ul>
+                    <li><a href="#">KVKK Aydınlatma</a></li>
+                    <li><a href="#">Gizlilik Politikası</a></li>
+                    <li><a href="#">Kullanım Şartları</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 LoraLabs. Tüm hakları saklıdır.</p>
+            <p>&copy; 2025 LoraLabs Bilişim Yazılım Teknolojileri. Tüm hakları saklıdır.</p>
         </div>
     </div>
 </footer>
