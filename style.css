@@ -1,12 +1,18 @@
 /* ==========================================================================
-   GOOGLE TRANSLATE UI CLEANUP
+   GOOGLE TRANSLATE UI CLEANUP — NUCLEAR
+   Blocks ALL Google Translate popups, banners, evaluation dialogs, tooltips
    ========================================================================== */
-#google_translate_element { position: fixed; top: -500px; left: -500px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
-.goog-te-banner-frame, .skiptranslate > iframe, .goog-te-balloon-frame, .goog-tooltip, .goog-tooltip:hover { display: none !important; }
-.goog-te-gadget { opacity: 0; pointer-events: none; height: 0; overflow: hidden; }
+#google_translate_element { position: fixed !important; top: -9999px !important; left: -9999px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; opacity: 0 !important; pointer-events: none !important; z-index: -1 !important; }
+.goog-te-banner-frame, .skiptranslate > iframe, .goog-te-balloon-frame, .goog-tooltip, .goog-tooltip:hover, .goog-te-menu-frame, .goog-te-ftab-frame { display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important; max-height: 0 !important; max-width: 0 !important; overflow: hidden !important; opacity: 0 !important; pointer-events: none !important; position: fixed !important; top: -9999px !important; left: -9999px !important; }
+.goog-te-gadget { opacity: 0 !important; pointer-events: none !important; height: 0 !important; overflow: hidden !important; position: absolute !important; top: -9999px !important; }
 .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; border: none !important; }
 body { top: 0 !important; }
+body > .skiptranslate { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; }
 font[style*="vertical-align"] { vertical-align: inherit !important; }
+iframe.goog-te-balloon-frame { display: none !important; }
+.goog-te-spinner-pos { display: none !important; }
+div[id^="goog-gt-"] { display: none !important; }
+#goog-gt-tt, .goog-te-menu-value, .goog-te-gadget-icon { display: none !important; }
 
 /* =============================================
    LoraLabs — Professional Design System
