@@ -164,7 +164,14 @@ function initTranslation() {
     const label = document.getElementById('lang-current');
     const options = document.querySelectorAll('.lang-option');
     if (!langBtn || !dropdown || !label) return;
-    let saved = localStorage.getItem(KEY) || 'tr';
+    let saved = localStorage.getItem(KEY);
+    
+    if (!saved) {
+        const browserLang = (navigator.language || navigator.userLanguage).split('-')[0].toLowerCase();
+        const supported = ['tr', 'en', 'de', 'fr', 'ar', 'ru', 'es'];
+        saved = supported.includes(browserLang) ? browserLang : 'tr';
+        localStorage.setItem(KEY, saved);
+    }
 
     const updateUI = (lang) => {
         label.textContent = LABELS[lang] || lang.toUpperCase();
@@ -179,23 +186,24 @@ function initTranslation() {
     const applyGT = (lang, attempt = 0) => {
         const combo = document.querySelector('select.goog-te-combo');
         if (combo) {
-            combo.value = lang;
-            combo.dispatchEvent(new Event('change', { bubbles: true }));
-        } else if (attempt < 50) {
-            setTimeout(() => applyGT(lang, attempt + 1), 150);
+            if (combo.value !== lang) {
+                combo.value = lang;
+                combo.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        } else if (attempt < 100) {
+            setTimeout(() => applyGT(lang, attempt + 1), 100);
         }
     };
 
-    /* Clear ALL googtrans cookies across every possible path and domain */
     function clearGoogTransCookies() {
         const hostname = window.location.hostname;
-        const paths = ['/', '', '/index.html', '/apps.html', '/staj.html'];
+        const paths = ['/', '', '/index.html', '/staj.html'];
         const domains = ['', hostname, '.' + hostname];
         paths.forEach(p => {
             domains.forEach(d => {
-                const domainStr = d ? '; domain=' + d : '';
-                document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=' + (p || '/') + domainStr;
-                document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=' + (p || '/') + '; SameSite=None; Secure' + domainStr;
+                const ds = d ? '; domain=' + d : '';
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${p || '/'}${ds}`;
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${p || '/'}; SameSite=None; Secure${ds}`;
             });
         });
     }
@@ -205,19 +213,15 @@ function initTranslation() {
     options.forEach(btn => {
         btn.addEventListener('click', () => {
             const lang = btn.getAttribute('data-lang');
-            if (lang === (localStorage.getItem(KEY) || 'tr')) { dropdown.classList.remove('open'); return; }
+            const current = localStorage.getItem(KEY) || 'tr';
+            if (lang === current) { dropdown.classList.remove('open'); return; }
             localStorage.setItem(KEY, lang);
             updateUI(lang);
             dropdown.classList.remove('open');
             if (lang === 'tr') {
                 clearGoogTransCookies();
-                /* Force Google Translate to restore original page */
                 const combo = document.querySelector('select.goog-te-combo');
-                if (combo) {
-                    combo.value = 'tr';
-                    combo.dispatchEvent(new Event('change', { bubbles: true }));
-                }
-                /* Reload after a brief delay to ensure cookie is cleared */
+                if (combo) { combo.value = 'tr'; combo.dispatchEvent(new Event('change', { bubbles: true })); }
                 setTimeout(() => location.reload(), 300);
             } else {
                 applyGT(lang);
@@ -225,36 +229,52 @@ function initTranslation() {
         });
     });
 
-    /* Aggressively kill ALL Google Translate UI injections */
     const killFeedback = () => {
-        /* Kill iframes */
-        document.querySelectorAll('iframe').forEach(f => {
-            const src = f.src || f.getAttribute('src') || '';
-            const cls = f.className || '';
-            if (src.includes('translate') || cls.includes('goog-te') || cls.includes('skiptranslate')) {
-                f.style.display = 'none';
-                f.style.visibility = 'hidden';
-                f.style.height = '0';
-                f.style.width = '0';
-                f.style.position = 'fixed';
-                f.style.top = '-9999px';
+        const currentLang = localStorage.getItem(KEY) || 'tr';
+        
+        // 1. Force Lock Check
+        if (currentLang !== 'tr') {
+            const combo = document.querySelector('select.goog-te-combo');
+            if (combo && combo.value !== currentLang) {
+                combo.value = currentLang;
+                combo.dispatchEvent(new Event('change', { bubbles: true }));
             }
+        }
+
+        // 2. Kill UI Elements
+        const selectors = [
+            '.goog-te-banner-frame', '.goog-te-balloon-frame', '.goog-tooltip', 
+            '.goog-te-menu-frame', '.goog-te-ftab-frame', '.goog-te-spinner-pos', 
+            '#goog-gt-tt', 'div[id^="goog-gt-"]', 'body > .skiptranslate',
+            'iframe[class*="goog-te"]', 'iframe[src*="translate.google"]',
+            '.goog-te-gadget', '.goog-te-gadget-simple'
+        ];
+        document.querySelectorAll(selectors.join(', ')).forEach(el => {
+            el.style.setProperty('display', 'none', 'important');
+            el.style.setProperty('visibility', 'hidden', 'important');
+            el.style.setProperty('opacity', '0', 'important');
+            el.style.setProperty('pointer-events', 'none', 'important');
+            el.style.setProperty('height', '0', 'important');
+            el.style.setProperty('width', '0', 'important');
         });
-        /* Kill all known Google Translate UI elements */
-        document.querySelectorAll('.goog-te-banner-frame, .goog-te-balloon-frame, .goog-tooltip, .goog-te-menu-frame, .goog-te-ftab-frame, .goog-te-spinner-pos, #goog-gt-tt, div[id^="goog-gt-"], body > .skiptranslate').forEach(el => {
-            el.style.display = 'none';
-            el.style.visibility = 'hidden';
-        });
-        /* Ensure body is never pushed down */
+        
+        // 3. Prevent Body Push
         if (document.body.style.top && document.body.style.top !== '0px') {
             document.body.style.top = '0px';
         }
-        document.body.style.position = '';
+        
+        // 4. Hide attribution bar
+        document.documentElement.style.setProperty('height', '100%', 'important');
+        document.body.style.setProperty('height', '100%', 'important');
     };
 
+
+
     killFeedback();
-    setInterval(killFeedback, 300);
-    new MutationObserver(killFeedback).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
+    setInterval(killFeedback, 500);
+    new MutationObserver(killFeedback).observe(document.documentElement, { 
+        childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] 
+    });
 }
 
 // Ensure it runs after DOM is ready
