@@ -31,6 +31,8 @@ Uygulama görselleri `public/apps/` klasöründedir.
 ## Notlar
 
 - Koyu tema varsayılandır; ziyaretçinin seçimi tarayıcıda (`localStorage`) saklanır.
-- Eski `/staj.html` adresi `/staj` sayfasına kalıcı olarak yönlenir (`next.config.ts`).
+- Eski `/staj.html` ve `/apps.html` adresleri `/staj` ve `/uygulamalar` sayfalarına kalıcı olarak
+  yönlenir (`next.config.ts`).
+- `public/app-ads.txt` AdMob doğrulama dosyasıdır (KPSS Koç, Sweepy); sitenin kökünde kalmalı, silinmemeli.
 - Bu Next.js sürümünde bazı API'ler eski sürümlerden farklıdır; değişiklik yapmadan önce
   `node_modules/next/dist/docs/` altındaki dokümanlara bakın (bkz. `AGENTS.md`).
