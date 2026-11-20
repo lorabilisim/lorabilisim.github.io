@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { HeroNetwork } from "@/components/hero-network";
-import { FadeIn, Reveal, RisingLines } from "@/components/motion";
+import { Reveal } from "@/components/motion";
 import { ProcessSteps } from "@/components/process";
 import {
   AppShowcase,
@@ -64,53 +64,40 @@ export default function HomePage() {
 
         <div className="wrapper relative">
           <div className="max-w-3xl">
-            <FadeIn>
-              <p className="eyebrow inline-flex items-center gap-3">
-                <span className="relative flex size-2">
-                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-cyan opacity-70" />
-                  <span className="relative inline-flex size-2 rounded-full bg-cyan" />
-                </span>
-                Teknoloji Ar-Ge Merkezi
-              </p>
-            </FadeIn>
+            <p className="eyebrow inline-flex items-center gap-3">
+              <span aria-hidden className="inline-flex size-2 rounded-full bg-cyan" />
+              Teknoloji Ar-Ge Merkezi
+            </p>
 
             <h1 className="mt-6 text-[clamp(2.7rem,8vw,5.5rem)] font-extrabold leading-[1.02]">
-              <RisingLines
-                lines={[
-                  "Akademik Vizyon,",
-                  <span key="l2" className="text-gradient">
-                    İleri Teknoloji
-                  </span>,
-                ]}
-              />
+              <span className="block">Akademik Vizyon,</span>
+              <span className="block">
+                <span className="text-gradient">İleri Teknoloji</span>
+              </span>
             </h1>
 
-            <FadeIn delay={0.45}>
-              <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
-                Yapay Zekâ, Tıbbi Segmentasyon, Otonom Dronlar ve LoRaWAN çözümleriyle bilimsel
-                araştırmaları sahada çalışan Ar-Ge projelerine dönüştürüyoruz.
-              </p>
-            </FadeIn>
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
+              Yapay Zekâ, Tıbbi Segmentasyon, Otonom Dronlar ve LoRaWAN çözümleriyle bilimsel
+              araştırmaları sahada çalışan Ar-Ge projelerine dönüştürüyoruz.
+            </p>
 
-            <FadeIn delay={0.6} className="mt-9 flex flex-wrap gap-4">
+            <div className="mt-9 flex flex-wrap gap-4">
               <ButtonLink href="/iletisim" arrow>
                 Bize Ulaşın
               </ButtonLink>
               <ButtonLink href="/projeler" variant="ghost">
                 Projelerimiz
               </ButtonLink>
-            </FadeIn>
+            </div>
 
-            <FadeIn delay={0.75}>
-              <ul className="mt-12 flex flex-wrap gap-x-6 gap-y-3 text-sm text-muted">
-                {expertise.map(({ icon: Icon, title }) => (
-                  <li key={title} className="inline-flex items-center gap-2">
-                    <Icon aria-hidden className="size-4 text-link" />
-                    {title}
-                  </li>
-                ))}
-              </ul>
-            </FadeIn>
+            <ul className="mt-12 flex flex-wrap gap-x-6 gap-y-3 text-sm text-muted">
+              {expertise.map(({ icon: Icon, title }) => (
+                <li key={title} className="inline-flex items-center gap-2">
+                  <Icon aria-hidden className="size-4 text-link" />
+                  {title}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
@@ -119,7 +106,7 @@ export default function HomePage() {
           aria-label="Aşağı kaydır"
           className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-muted transition-colors hover:text-fg sm:block"
         >
-          <ChevronDown aria-hidden className="size-6 animate-bounce" />
+          <ChevronDown aria-hidden className="size-6" />
         </a>
       </section>
 

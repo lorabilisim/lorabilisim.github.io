@@ -7,8 +7,7 @@ import {
   useSpring,
   type Variants,
 } from "motion/react";
-import type { CSSProperties, PointerEvent, ReactNode } from "react";
-import { cn } from "@/lib/cn";
+import type { ReactNode } from "react";
 
 const EASE = [0.21, 0.47, 0.32, 0.98] as const;
 
@@ -85,83 +84,6 @@ export function StaggerItem({
     <motion.div data-reveal className={className} variants={staggerChild}>
       {children}
     </motion.div>
-  );
-}
-
-/** Sayfa yüklenince satır satır yükselen başlık. */
-export function RisingLines({
-  lines,
-  className,
-  delay = 0.1,
-}: {
-  lines: ReactNode[];
-  className?: string;
-  delay?: number;
-}) {
-  return (
-    <span className={className}>
-      {lines.map((line, i) => (
-        // Dikey dolgu, "İ" noktası ve kuyruklu harfler kırpılmasın diye var.
-        <span key={i} className="-my-[0.14em] block overflow-hidden py-[0.14em]">
-          <motion.span
-            data-reveal
-            className="block"
-            initial={{ y: "115%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.9, delay: delay + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {line}
-          </motion.span>
-        </span>
-      ))}
-    </span>
-  );
-}
-
-/** Sayfa yüklenince beliren blok (kaydırma beklemeden). */
-export function FadeIn({
-  children,
-  className,
-  delay = 0,
-  y = 20,
-}: {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-  y?: number;
-}) {
-  return (
-    <motion.div
-      data-reveal
-      className={className}
-      initial={{ opacity: 0, y }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay, ease: EASE }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-/** İmleci takip eden ışık efekti taşıyan kart sarmalayıcısı. */
-export function Spotlight({
-  children,
-  className,
-  style,
-}: {
-  children: ReactNode;
-  className?: string;
-  style?: CSSProperties;
-}) {
-  function onPointerMove(e: PointerEvent<HTMLDivElement>) {
-    const rect = e.currentTarget.getBoundingClientRect();
-    e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-    e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`);
-  }
-  return (
-    <div className={cn("spotlight", className)} style={style} onPointerMove={onPointerMove}>
-      {children}
-    </div>
   );
 }
 

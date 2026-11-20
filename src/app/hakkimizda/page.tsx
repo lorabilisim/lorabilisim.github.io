@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { FlaskConical, GraduationCap, MapPin, Mountain, ShieldCheck } from "lucide-react";
-import { Reveal, Spotlight, Stagger, StaggerItem } from "@/components/motion";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { CtaBand, ExpertiseGrid, InternshipBand, PageHero } from "@/components/sections";
 import { SectionHeading } from "@/components/ui";
 import { site } from "@/lib/site";
@@ -67,7 +67,7 @@ export default function AboutPage() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <Spotlight className="rounded-xl border border-line bg-card p-8">
+            <div className="rounded-xl border border-line bg-card p-8">
               <span className="grid size-12 place-items-center rounded-md bg-primary/12 text-link ring-1 ring-primary/25">
                 <MapPin aria-hidden className="size-6" />
               </span>
@@ -79,7 +79,7 @@ export default function AboutPage() {
               <p className="mt-6 border-t border-line pt-6 font-display font-semibold">
                 {site.address}
               </p>
-            </Spotlight>
+            </div>
           </Reveal>
         </div>
       </section>

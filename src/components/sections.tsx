@@ -15,7 +15,7 @@ import type { MobileApp } from "@/lib/apps";
 import type { Project } from "@/lib/projects";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/cn";
-import { FadeIn, Reveal, RisingLines, Spotlight, Stagger, StaggerItem } from "./motion";
+import { Reveal, Stagger, StaggerItem } from "./motion";
 import { ProjectVisual } from "./project-visual";
 import { ScreenshotDeck } from "./screenshot-deck";
 import { Aurora, Badge, ButtonLink, GooglePlayBadge, SectionHeading } from "./ui";
@@ -67,18 +67,14 @@ export function PageHero({
         className="bg-grid absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_at_top,black_10%,transparent_70%)]"
       />
       <div className="wrapper relative">
-        <FadeIn>
-          <p className="eyebrow">{eyebrow}</p>
-        </FadeIn>
+        <p className="eyebrow">{eyebrow}</p>
         <h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl">
-          <RisingLines lines={[title]} delay={0.05} />
+          {title}
         </h1>
         {description && (
-          <FadeIn delay={0.25}>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{description}</p>
-          </FadeIn>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{description}</p>
         )}
-        {children && <FadeIn delay={0.35} className="mt-8">{children}</FadeIn>}
+        {children && <div className="mt-8">{children}</div>}
       </div>
     </section>
   );
@@ -90,13 +86,13 @@ export function ExpertiseGrid({ detailed = false }: { detailed?: boolean }) {
     <Stagger className="grid gap-4 sm:grid-cols-2">
       {expertise.map(({ icon: Icon, title, text, long }) => (
         <StaggerItem key={title} className="h-full">
-          <Spotlight className="h-full rounded-lg border border-line bg-card p-6 transition-colors duration-300 hover:border-primary/50">
+          <div className="h-full rounded-lg border border-line bg-card p-6 transition-colors duration-300 hover:border-primary/50">
             <span className="grid size-12 place-items-center rounded-md bg-gradient-to-br from-primary/25 to-accent/20 text-link ring-1 ring-primary/30">
               <Icon aria-hidden className="size-6" />
             </span>
             <h3 className="mt-5 text-lg font-semibold">{title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted">{detailed ? long : text}</p>
-          </Spotlight>
+          </div>
         </StaggerItem>
       ))}
     </Stagger>

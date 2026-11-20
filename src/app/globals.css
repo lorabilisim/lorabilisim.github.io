@@ -134,30 +134,6 @@ p {
   background-size: 56px 56px;
 }
 
-/* İmleci takip eden ışık — --mx / --my değerlerini Spotlight bileşeni yazar */
-.spotlight {
-  position: relative;
-  isolation: isolate;
-}
-.spotlight::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    340px circle at var(--mx, 50%) var(--my, 50%),
-    color-mix(in srgb, var(--primary) 22%, transparent),
-    transparent 65%
-  );
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  z-index: -1;
-  pointer-events: none;
-}
-.spotlight:hover::before {
-  opacity: 1;
-}
-
 /* Harita, koyu temada siteyle uyumlu görünsün */
 [data-theme="dark"] .map-frame {
   filter: invert(0.92) hue-rotate(180deg) saturate(0.75) brightness(0.95) contrast(0.92);
@@ -240,15 +216,6 @@ p {
     transform: translateY(0);
   }
 }
-@keyframes aurora {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(4%, -3%, 0) scale(1.08);
-  }
-}
 
 .anim-float {
   animation: float-y 5s ease-in-out infinite;
@@ -280,9 +247,6 @@ p {
 }
 .anim-bubble {
   animation: bubble-in 6s ease-in-out infinite;
-}
-.anim-aurora {
-  animation: aurora 16s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

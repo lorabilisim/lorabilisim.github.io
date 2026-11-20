@@ -1,4 +1,3 @@
-import { FadeIn } from "./motion";
 import { PageHero } from "./sections";
 
 export type LegalSection = {
@@ -23,7 +22,7 @@ export function LegalPage({
     <>
       <PageHero eyebrow="Kurumsal" title={title} description={intro} />
       <section className="pb-24">
-        <FadeIn delay={0.3} className="wrapper">
+        <div className="wrapper">
           <article className="max-w-3xl">
             <p className="text-sm text-muted">Son güncelleme: {updated}</p>
             {sections.map((section, i) => (
@@ -46,7 +45,7 @@ export function LegalPage({
               </section>
             ))}
           </article>
-        </FadeIn>
+        </div>
       </section>
     </>
   );

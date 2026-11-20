@@ -108,11 +108,8 @@ export function Aurora({ className }: { className?: string }) {
         className,
       )}
     >
-      <div className="anim-aurora absolute -top-[20%] right-[-10%] h-[70%] w-[55%] rounded-full bg-primary/20 blur-[120px] light:bg-primary/15" />
-      <div
-        className="anim-aurora absolute bottom-[-25%] left-[-12%] h-[65%] w-[50%] rounded-full bg-accent/20 blur-[130px] light:bg-accent/10"
-        style={{ animationDelay: "-8s" }}
-      />
+      <div className="absolute -top-[20%] right-[-10%] h-[70%] w-[55%] rounded-full bg-primary/20 blur-[120px] light:bg-primary/15" />
+      <div className="absolute bottom-[-25%] left-[-12%] h-[65%] w-[50%] rounded-full bg-accent/20 blur-[130px] light:bg-accent/10" />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { FadeIn, Reveal, Stagger, StaggerItem } from "@/components/motion";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { ProcessSteps } from "@/components/process";
 import { AppShowcase } from "@/components/sections";
 import { Aurora, GooglePlayBadge, SectionHeading } from "@/components/ui";
@@ -42,7 +42,7 @@ export default async function AppPage({ params }: PageProps<"/uygulamalar/[slug]
           className="bg-grid absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_at_top,black_10%,transparent_70%)]"
         />
         <div className="wrapper relative">
-          <FadeIn>
+          <div>
             <Link
               href="/uygulamalar"
               className="mb-10 inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-fg"
@@ -50,7 +50,7 @@ export default async function AppPage({ params }: PageProps<"/uygulamalar/[slug]
               <ArrowLeft aria-hidden className="size-4" />
               Tüm uygulamalar
             </Link>
-          </FadeIn>
+          </div>
           <AppShowcase app={app} headingLevel="h1" showDetailLink={false} />
         </div>
       </section>

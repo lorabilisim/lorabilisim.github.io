@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, Info } from "lucide-react";
-import { FadeIn, Reveal, RisingLines, Spotlight, Stagger, StaggerItem } from "@/components/motion";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { ProcessSteps } from "@/components/process";
 import { ProjectVisual } from "@/components/project-visual";
 import { CtaBand } from "@/components/sections";
@@ -45,38 +45,34 @@ export default async function ProjectPage({ params }: PageProps<"/projeler/[slug
         />
         <div className="wrapper relative grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <FadeIn>
-              <Link
-                href="/projeler"
-                className="inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-fg"
-              >
-                <ArrowLeft aria-hidden className="size-4" />
-                Tüm projeler
-              </Link>
-              <div className="mt-6">
-                <Badge>{project.category}</Badge>
-              </div>
-            </FadeIn>
+            <Link
+              href="/projeler"
+              className="inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-fg"
+            >
+              <ArrowLeft aria-hidden className="size-4" />
+              Tüm projeler
+            </Link>
+            <div className="mt-6">
+              <Badge>{project.category}</Badge>
+            </div>
             <h1 className="mt-5 text-4xl font-extrabold leading-[1.08] sm:text-5xl">
-              <RisingLines lines={[project.title]} delay={0.05} />
+              {project.title}
             </h1>
-            <FadeIn delay={0.25}>
-              <p className="mt-6 text-lg leading-relaxed text-muted">{project.lead}</p>
-              <ul className="mt-8 flex flex-wrap gap-2">
-                {project.tech.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-md border border-line bg-fg/[0.04] px-3 py-1 text-xs font-medium text-muted"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </FadeIn>
+            <p className="mt-6 text-lg leading-relaxed text-muted">{project.lead}</p>
+            <ul className="mt-8 flex flex-wrap gap-2">
+              {project.tech.map((item) => (
+                <li
+                  key={item}
+                  className="rounded-md border border-line bg-fg/[0.04] px-3 py-1 text-xs font-medium text-muted"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
-          <FadeIn delay={0.2} y={32}>
+          <div>
             <ProjectVisual kind={project.visual} className="shadow-soft" />
-          </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -105,13 +101,13 @@ export default async function ProjectPage({ params }: PageProps<"/projeler/[slug
           <Stagger className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {project.capabilities.map((item, i) => (
               <StaggerItem key={item.title} className="h-full">
-                <Spotlight className="h-full rounded-lg border border-line bg-card p-6 transition-colors duration-300 hover:border-primary/50">
+                <div className="h-full rounded-lg border border-line bg-card p-6 transition-colors duration-300 hover:border-primary/50">
                   <span className="font-display text-sm font-bold text-link">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mt-3 text-lg font-semibold">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{item.text}</p>
-                </Spotlight>
+                </div>
               </StaggerItem>
             ))}
           </Stagger>
